@@ -5,7 +5,7 @@ N = int(input("Ingrese un número entero para generar la serie:" ))
 
 # Se verificará si el número ingresado es un número válido (necesariamente debe ser entero y a su vez natural).
 if N <= 0:
-    print ("Por favor, ingrese un número entero positivo.")
+    print ("Por favor, ingrese un número entero positivo diferente a cero.")
 else:
     if N == 1:
         print ("Serie de Fibonacci: 0")
