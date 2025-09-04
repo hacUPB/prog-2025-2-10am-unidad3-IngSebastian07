@@ -1,4 +1,6 @@
 # Sumatoria de Números.
+# El número debde ser natural.
+# El usuario no puede continuar si no ingresa un número válido.
 
 N = int(input("Ingrese un número positivo: "))
 while N < 0:
