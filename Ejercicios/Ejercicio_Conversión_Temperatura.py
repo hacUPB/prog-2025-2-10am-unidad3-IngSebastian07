@@ -42,4 +42,3 @@ while opcion != 'Q': # != Significa diferente
                 print ("Opción no válida")
     else:
         print ("Saliendo del programa...")
-        

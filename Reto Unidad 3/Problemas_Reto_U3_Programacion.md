@@ -40,6 +40,17 @@ Para la implementación se usarán:
 
 De esta forma, el programa simulará una revisión técnica en línea de vuelo, en la cual el ingeniero aeronáutico puede verificar rápidamente la condición de los neumáticos antes de autorizar la aeronave para operaciones seguras.
 
+### Tabla de Análisis.
+
+| Variable | Tipo (Entrada/Salida/Control) | Tipo de Variable en Phyton | Descripción |
+|----------|----------|----------|----------|
+| NLL | Entrada | int | Esta variable define el número de llantas que tiene en el avión, tanto en el _main landing gear_ como en el _nose landing gear._
+| PE | Entrada, Control | float | Esta variable define la presión estándar que cada neumático debe tener (ingresada en psi).  
+| PNLL | Entrada | float | Esta variable define la presión actual de cada llanta. |
+| NIT | Salida | float | Esta variable dará a conocer la cantidad de Nitrógeno (N₂) que se debe agregar (cantidad positiva) o retirar (cantidad negativa) a cada llanta para cumplir con la PE. |
+| RF | Salida | str | Esta variable define un reporte final indicando qué llantas cumplen con la presión adecuada y cuáles requieren ajuste.
+---
+
 ### Opción 2.
 **Problema propuesto:** Pesaje y centro de gravedad de una aeronave.
 En el marco de los procedimientos establecidos en la ATA 08 – Leveling & Weighing, el pesaje de una aeronave es una tarea fundamental para garantizar que su masa total y su centro de gravedad (CG) estén dentro de los límites operacionales certificados. Estos parámetros influyen directamente en la estabilidad, control y eficiencia del vuelo.
