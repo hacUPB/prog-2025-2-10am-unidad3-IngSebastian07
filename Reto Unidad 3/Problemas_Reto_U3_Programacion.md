@@ -46,9 +46,77 @@ De esta forma, el programa simulará una revisión técnica en línea de vuelo, 
 |----------|----------|----------|----------|
 | NLL | Entrada | int | Esta variable define el número de llantas que tiene en el avión, tanto en el _main landing gear_ como en el _nose landing gear._
 | PE | Entrada, Control | float | Esta variable define la presión estándar que cada neumático debe tener (ingresada en psi).  
-| PNLL | Entrada | float | Esta variable define la presión actual de cada llanta. |
+| PALL | Entrada | float | Esta variable define la presión actual de cada llanta. |
 | NIT | Salida | float | Esta variable dará a conocer la cantidad de Nitrógeno (N₂) que se debe agregar (cantidad positiva) o retirar (cantidad negativa) a cada llanta para cumplir con la PE. |
-| RF | Salida | str | Esta variable define un reporte final indicando qué llantas cumplen con la presión adecuada y cuáles requieren ajuste.
+| RF | Entrada | str | Esta variable define un reporte final indicando qué llantas cumplen con la presión adecuada y cuáles requieren ajuste.
+| VC | Entrada | int | Esta variable permite definir condiciones falsas o verdaderas.
+
+### Pseudocódigo.
+
+```
+INICIO
+Escribir "Ingrese la cantidad de llantas de la aeronave (incluya las del *main landing gear* y *nose landing gear*).
+Leer NLL
+Si NLL <= 0:
+    Escribir "Por favor, ingrese un número válido."
+Si no:
+    Escribir "Ingrese la presión estándar (en psi) que debe tener cada llanta."
+    Leer PE
+    Si PE <= 0:
+        Escribir "Por favor, ingrese un número válido"
+    Si no:
+        Definir Presion[NLL] como arreglo numérico
+        Para i = 1 hasta i = NLL:
+            Escribir "Ingrese la presión actual (en psi) de la llanta {i}"
+            Leer DATO
+            Presion[i] = DATO
+            i = i + 1
+            Escribir "Las presiones ingresadas son:"
+            Para j = 1 hasta j = NLL:
+                Escribir "La presión en la llanta {j} es de: {DATO}"
+                j = j + 1
+            Fin para
+            Mostrar "Seleccione 1 si los valores ingresados son correctos, 0 si no lo son."
+            Leer VC
+            Si VC = 0:
+                (Repetir el proceso anterior)
+            Si no:
+                Si VC = 1
+                    Definir Nitrogeno[NLL] como arreglo numérico
+                    Para j = 1 hasta j = NLL:
+                        NIT = PE - DATO
+                    Mientras NIT != 0:
+                        Escribir "La llanta {NLL} requiere una presión de {NIT}"
+                        Escribir "Ingrese la presión actual (en psi) de la llanta {i}"
+                        Leer DATO
+                        Presion[i] = DATO
+                        i = i + 1
+                Si no:
+                    Mostrar "Por favor, ingrese una opción válida."
+                    Fin para
+                Fin si
+            Fin si
+        Fin para
+Escribir "Oprima "R" si desea ver el reporte actual de la presión o "N" si no es así"
+Leer RF
+Si RF = R:
+    Para k = 1 hasta k = NLL:
+        Mostrar "El reporte actual de la presión es:"
+        Mostrar "La presión en la llanta {k} es de: {DATO}"
+    Fin para
+Si no:
+    Si RF = N:
+        Mostrar "No se mostrará el reporte."
+    Si no: 
+        Mostrar "Por favor, ingrese una opción válida."
+    Fin si
+Fin si
+FIN
+
+
+            
+
+```
 ---
 
 ### Opción 2.
