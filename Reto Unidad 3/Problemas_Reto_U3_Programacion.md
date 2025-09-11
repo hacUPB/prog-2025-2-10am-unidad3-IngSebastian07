@@ -51,6 +51,15 @@ De esta forma, el programa simulará una revisión técnica en línea de vuelo, 
 | RF | Entrada | str | Esta variable define un reporte final indicando qué llantas cumplen con la presión adecuada y cuáles requieren ajuste.
 | VC | Entrada | int | Esta variable permite definir condiciones falsas o verdaderas.
 
+### Variables que actúan como constantes
+
+| Variable | Tipo | Descripción | 
+|----------|------|-------------|
+| NLL | Constante | Es el número de llantas de la aeronave. A partir de ellas se derivan acciones en el pseudocódigo, como por ejemplo, definir cuántas veces se pregunta por la presión en cada llanta. | 
+| PE | Constante | Es la presión estándar que debe tener cada llanta. Es una variable de control porque a partir de ella se definen: cálculos, mensajes, reportes y procedimientos en el pseudocódigo. |
+
+
+
 ### Pseudocódigo.
 
 ```
