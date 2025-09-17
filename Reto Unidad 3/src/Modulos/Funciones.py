@@ -1,3 +1,4 @@
+# Opcion 1
 
 def leer_entero_positivo(prompt):
     while True:
@@ -32,7 +33,7 @@ def leer_flotante_no_negativo(prompt):
         except ValueError:
             print("Error: entrada no válida. Ingrese un número (ej. 32.5).")
 
-def main():
+def OP1():
     # Parámetros y validación inicial
     TOL = 0.5  # tolerancia en psi (puedes cambiarla)
 
@@ -133,5 +134,99 @@ def main():
             print("Fin del proceso.")
             break  # sale del bucle externo y termina el programa
 
+'''
 if __name__ == "__main__":
     main()
+'''    
+# Opcion 2
+
+
+def CALC_CG (MT, PMT):
+    CG = MT / PMT
+    return CG
+
+def OP2 ():
+    MDL = input("Ingrese el modelo de la aeronave: ")
+    MTCL = input("Ingrese la matrícula de la aeronave: ")
+    NSRE = input("Ingrese el número de serie de la aeronave: ")
+    BDMN = float(input("Ingrese la distancia desde el DATUM hasta el punto de apoyo del tren de nariz (ft): "))
+    BDMP = float(input("Ingrese la distancia desde el DATUM hasta el punto de apoyo del tren principal: "))
+    RPCG = float(input("Ingrese el Rango Permitido del Centro de Gravedad (en distancia desde el datum): "))
+    RPCGmin = RPCG - 1
+    RPCGmax = RPCG + 1
+    while True:
+        PMTN = float(input("Ingrese el peso registrado en el Tren de nariz (lb): "))
+        PMTPI = float(input("Ingrese el peso registrado en el Tren principal (izquierda)): "))
+        PMTPD = float(input("Ingrese el peso registrado en el Tren principal (derecha): "))
+        PMTP = PMTPI + PMTPD    
+        PMT = PMTP + PMTN
+        MPN = PMTN * BDMN
+        MPP = PMTP * BDMP
+        MT = MPN + MPP
+        CG = CALC_CG (MT, PMT)
+        if RPCGmin < CG < RPCGmax:
+            break
+        elif CG < RPCGmin: 
+            print ("Añada más peso atras o reduzca adelante e introduzca los nuevos datos")
+        elif CG > RPCGmax:
+            print ("Añada más peso adelante o reduzca atras e introduzca los nuevos datos")
+    print (f"El avión {MDL} con matrícula {MTCL} y numero de serie {NSRE}, cuenta con un CG a {CG} metros del Datum, Dato valido para permitir su salida.")
+
+# Opcion 3
+
+def calcular_combustible_base(distancia, consumo_por_mi):
+    combustible_base = distancia * consumo_por_mi
+    return combustible_base
+
+def calcular_combustible_escalas(escalas, combustible_por_escala):
+    if escalas > 0:
+        combustible_escalas = escalas * combustible_por_escala
+    else:
+        combustible_escalas = 0
+    return combustible_escalas
+
+def ajuste_por_peso(peso_carga, limite_peso, combustible_extra_por_peso, distancia):
+    if peso_carga > limite_peso:
+        combustible_peso = combustible_extra_por_peso * distancia
+    else:
+        combustible_peso = 0
+    return combustible_peso
+
+def reserva_seguridad(combustible_base):
+    reserva_seguridad_fija = combustible_base * 0.3
+    return reserva_seguridad_fija
+
+def combustible_total_vuelo(combustible_base, combustible_escalas, combustible_peso, reserva_seguridad_fija):
+    total_vuelo =  combustible_base + combustible_escalas + combustible_peso + reserva_seguridad_fija
+    return total_vuelo
+
+def calcular_precio_total(total_vuelo, precio_por_galon):
+    precio_total = total_vuelo * precio_por_galon
+    return precio_total
+
+def OP3():
+    vuelos = int(input("Ingrese la cantidad de vuelos que realizará el día de hoy el avión: "))
+    consumo_por_mi = float(input("Ingrese la cantidad de galones de combustible que consume el avión por milla: "))
+    combustible_por_escala = float(input("Ingrese la cantidad de galones de combustible que consume el avión por escala: "))
+    combustible_extra_por_peso = float(input("Ingrese la cantidad de galones de combustible que consume el avión por superar el límite de peso (por libra), cada milla: "))
+    limite_peso = float(input("Ingrese el peso de la carga a partir del cual se consume combustible extra (lb): "))
+    precio_por_galon = float(input("Ingrese el coste del combustible por galón (Dólares): "))
+    total_dia = 0
+    precio_total_dia = 0
+
+    for i in range (1, vuelos+1, 1):
+        print (f"\nvuelo número {i}\n")
+        distancia = float(input("Ingrese la distancia del vuelo (mi): "))
+        escalas = int(input("ingrese las escalas del vuelo: "))
+        peso_carga = float(input("Ingrese el peso de la carga del avión (lb): "))
+        combustible_base = calcular_combustible_base(distancia, consumo_por_mi)
+        combustible_escalas = calcular_combustible_escalas(escalas, combustible_por_escala)
+        combustible_peso = ajuste_por_peso(peso_carga, limite_peso, combustible_extra_por_peso, distancia)
+        reserva_seguridad_fija = reserva_seguridad(combustible_base)
+        total_vuelo = combustible_total_vuelo(combustible_base, combustible_escalas, combustible_peso, reserva_seguridad_fija)
+        precio_total = calcular_precio_total(total_vuelo, precio_por_galon)
+        print (f"\nEl combustible necesario para el vuelo es: {total_vuelo}Gal . \nEl costo para este vuelo es: ${precio_total}")
+        total_dia += total_vuelo
+        precio_total_dia += precio_total
+
+    print (f"\n\nEl combustible que esta aeronave gastará en el día es: {total_dia}Gal . \nEl costo de combustible para todas las operaciones es: ${precio_total_dia}")    
