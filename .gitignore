@@ -205,3 +205,72 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Entornos virtuales
+venv/
+ENV/
+env/
+.venv/
+ 
+# Archivos compilados de Python
+__pycache__/
+*.py[cod]
+*$py.class
+ 
+# Archivos de configuración locales
+*.env
+*.ini
+*.cfg
+*.toml
+ 
+# Logs
+*.log
+ 
+# Archivos de base de datos locales
+*.sqlite3
+*.db
+ 
+# Distribución / empaquetado
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+ 
+# Documentación
+docs/_build/
+doc/_build/
+ 
+# Archivos de test / coverage
+.coverage
+.tox/
+.nox/
+.cache/
+.pytest_cache/
+.coverage.*
+htmlcov/
+ 
+# Jupyter Notebooks
+.ipynb_checkpoints
+ 
+# VSCode / IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+ 
+# Archivos del sistema
+.DS_Store
+Thumbs.db
